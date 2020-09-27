@@ -47,6 +47,9 @@ client.on('message', async (message) => {
     }
 
     default:
+      message.channel.send(
+        `<@${message.author.id}> errou o comando, nao seja burro`
+      )
       break
   }
 })
