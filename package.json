@@ -1,0 +1,17 @@
+{
+  "name": "discordBotV1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Eduardo Bittencourt",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
