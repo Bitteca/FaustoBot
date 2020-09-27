@@ -1,13 +1,16 @@
 const express = require('express')
 const { Client } = require('discord.js')
 const app = express()
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const client = new Client()
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.login('NzU5ODU3MTk3OTc0NDIxNTI1.X3DmKQ.90wUoBf-ASpsfG_tLt7nVJEYras')
+client.login(process.env.BOT_TOKEN)
 
 client.on('message', async (message) => {
   if (!message.content.startsWith('!') || message.author.bot) return
