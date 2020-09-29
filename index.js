@@ -65,10 +65,7 @@ client.on('message', async (message) => {
       break
     }
     case 'mute': {
-      const guild = message.guild
-      const voiceChannel = guild.channels.cache.find(
-        (channel) => channel.id === '759850223211249674'
-      )
+      const voiceChannel = message.member.voice.channel
 
       voiceChannel.members.forEach((member) => {
         const voiceState = member.voice
@@ -77,10 +74,7 @@ client.on('message', async (message) => {
       break
     }
     case 'unmute': {
-      const guild = message.guild
-      const voiceChannel = guild.channels.cache.find(
-        (channel) => channel.id === '759850223211249674'
-      )
+      const voiceChannel = message.member.voice.channel
 
       voiceChannel.members.forEach((member) => {
         const voiceState = member.voice
