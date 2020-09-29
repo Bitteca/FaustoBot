@@ -1,7 +1,8 @@
 const express = require('express')
-const { Client } = require('discord.js')
+const { Client, Attachment } = require('discord.js')
 const app = express()
 const dotenv = require('dotenv')
+const ytdl = require('ytdl-core')
 
 dotenv.config()
 
@@ -19,8 +20,50 @@ client.on('message', async (message) => {
 
   switch (command.toLowerCase()) {
     case 'horacerta':
-      message.channel.send(`@everyone SETE E TRINTA E SETE BITCHO!`)
+      if (!message.member.voice.channel) {
+        message.channel.send(
+          `<@${message.author.id}> vc precisa estar dentro de um canal de voz, nao seja burro!`
+        )
+      } else {
+        const connection = await message.member.voice.channel.join()
+        connection.play(ytdl('https://www.youtube.com/watch?v=MJ75-s9p-k8'), {
+          filter: 'audioonly',
+        })
+      }
+
       break
+
+    case 'errou': {
+      if (!message.member.voice.channel) {
+        message.channel.send(
+          `<@${message.author.id}> vc precisa estar dentro de um canal de voz, nao seja burro!`
+        )
+      } else {
+        const connection = await message.member.voice.channel.join()
+        connection.play(ytdl('https://www.youtube.com/watch?v=MFa9pvnVe0w'), {
+          filter: 'audioonly',
+        })
+      }
+      break
+    }
+    case 'eita': {
+      if (!message.member.voice.channel) {
+        message.channel.send(
+          `<@${message.author.id}> vc precisa estar dentro de um canal de voz, nao seja burro!`
+        )
+      } else {
+        const connection = await message.member.voice.channel.join()
+        connection.play(
+          ytdl(
+            'https://www.youtube.com/watch?v=AUt1SpEwEvk&ab_channel=QuintanilhaJunior'
+          ),
+          {
+            filter: 'audioonly',
+          }
+        )
+      }
+      break
+    }
     case 'mute': {
       const guild = message.guild
       const voiceChannel = guild.channels.cache.find(
@@ -50,6 +93,16 @@ client.on('message', async (message) => {
       message.channel.send(
         `<@${message.author.id}> errou o comando, nao seja burro`
       )
+      if (!message.member.voice.channel) {
+        message.channel.send(
+          `<@${message.author.id}> vc precisa estar dentro de um canal de voz, nao seja burro!`
+        )
+      } else {
+        const connection = await message.member.voice.channel.join()
+        connection.play(ytdl('https://www.youtube.com/watch?v=MFa9pvnVe0w'), {
+          filter: 'audioonly',
+        })
+      }
       break
   }
 })
